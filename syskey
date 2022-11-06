@@ -1,0 +1,53 @@
+#!/bin/bash
+
+rd="\e[1;31m"
+yl="\e[1;33m"
+gr="\e[1;32m"
+wht="\e[0m"
+
+keys="extra-keys= [
+ ['ESC','/','-','HOME','UP','END','PGUP'], 
+ ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']
+]"
+
+keyboard="enforce-char-based-input = true"
+
+setkey(){
+    if [ ! -d $HOME/.termux ]; then
+        mkdir $HOME/.termux
+    fi
+
+    if [ ! -f $HOME/.termux/termux.properties ]; then
+        touch $HOME/.termux/termux.properties
+    fi
+
+    echo ${keys} >> $HOME/.termux/termux.properties
+    echo ${keyboard} >> $HOME/.termux/termux.properties
+}
+
+banner(){
+echo -e $rd
+clear
+cat << EOF
+
+                 ╦╔═┌─┐┬ ┬┌─┐
+                 ╠╩╗├┤ └┬┘└─┐ :
+                 ╩ ╩└─┘ ┴ └─┘
+
+EOF
+
+echo -e "${rd}[${yl}!${rd}] ${yl}Setting keys .........."
+echo -e $wht
+}
+
+setup(){
+    start=$(date +"%S")
+    banner
+    setkey
+    termux-reload-settings
+    end=$(date +"%S")
+    res=$(( $end - $start ))
+    echo -e "${rd}[${yl}!${rd}] ${wht}Completed in ${gr}${res}"
+}
+
+setup
