@@ -47,7 +47,7 @@ setup(){
     termux-reload-settings
     end=$(date +"%S")
     res=$(( $end - $start ))
-    echo -e "${rd}[${yl}!${rd}] ${wht}Completed in ${gr}${res}"
+    echo -e "${rd}[${yl}!${rd}] ${wht}Completed in ${gr}${res}${wht}sec!"
 }
 
 setup
