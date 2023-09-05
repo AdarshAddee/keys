@@ -29,4 +29,9 @@ chmod +x keys
 ./keys
 ```
 
+# One line Install
+```
+apt update && apt upgrade -y && apt install git -y && git clone https://github.com/adarshaddee/keys.git
+```
+
 # Dhanyawad!
